@@ -20,4 +20,6 @@ with tgb.Page() as page:
 
 data = compute_data(value)
 
-Gui(page=page).run()
+# Create the GUI and run the app
+gui = Gui(page)
+gui.run(port=5050)

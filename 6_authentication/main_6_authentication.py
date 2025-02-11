@@ -27,7 +27,8 @@ roles = {
     "Alexandre": ["TAIPY_READER"],
 }
 
-authenticator = Authenticator(protocol="taipy", roles=roles, passwords=passwords)
+authenticator = Authenticator(
+    protocol="taipy", roles=roles, passwords=passwords)
 
 is_admin = AnyOf("admin", True, False)
 
@@ -35,7 +36,8 @@ is_admin = AnyOf("admin", True, False)
 def on_login(state, id, login_args):
     state.username, password = login_args["args"][:2]
     try:
-        state.credentials = tp_enterprise.login(state, state.username, password)
+        state.credentials = tp_enterprise.login(
+            state, state.username, password)
         notify(state, "success", f"Logged in as {state.username}...")
         navigate(state, "page1", force=True)
     except Exception as e:
@@ -96,7 +98,8 @@ def apply_changes(state):
         )
     ]
     state.data = state.data[state.data["Category"] == state.selected_category]
-    state.data = state.data[state.data["Sub-Category"] == state.selected_subcategory]
+    state.data = state.data[state.data["Sub-Category"]
+                            == state.selected_subcategory]
     state.chart_data = (
         state.data.groupby("State")["Sales"]
         .sum()
@@ -189,4 +192,4 @@ pages = {
 }
 
 
-Gui(pages=pages).run(title="Sales", dark_mode=False, debug=True)
+Gui(pages=pages).run(title="Sales", dark_mode=False, debug=True, port=5055)

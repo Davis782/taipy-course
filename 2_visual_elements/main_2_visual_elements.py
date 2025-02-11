@@ -33,7 +33,8 @@ def change_category(state):
 
 
 with tgb.Page() as page:
-    tgb.selector(value="{selected_category}", lov=categories, on_change=change_category)
+    tgb.selector(value="{selected_category}",
+                 lov=categories, on_change=change_category)
     tgb.chart(
         data="{chart_data}",
         x="State",
@@ -44,4 +45,5 @@ with tgb.Page() as page:
     tgb.html("br")
     tgb.table(data="{data}")
 
-Gui(page=page).run(title="Sales", dark_mode=False)
+Gui(page=page).run(title="Sales", dark_mode=False,
+                   port=5051)  # Create the GUI and run the app
