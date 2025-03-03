@@ -4,7 +4,7 @@ import pandas as pd
 
 from chart import generate_map
 
-data = pd.read_csv("data.csv")
+data = pd.read_csv("Data/data_2.csv")
 chart_data = (
     data.groupby("State")["Sales"]
     .sum()
