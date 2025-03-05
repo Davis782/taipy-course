@@ -1,8 +1,8 @@
 from taipy.gui import Gui
 import taipy.gui.builder as tgb
-from math import cos, exp
 
-value = 10
+
+values = [20, 40, 80]
 
 
 def compute_data(decay: int) -> list:
@@ -14,11 +14,11 @@ def slider_moved(state):
 
 
 with tgb.Page() as page:
-    tgb.text(value="# Taipy Getting Started", mode="md")
-    tgb.slider(value="{value}", on_change=slider_moved)
-    tgb.chart(data="{data}")
+    tgb.text(value="# Taipy Goodbye World Started", mode="md")
+    # tgb.slider(value="{values}", on_change=slider_moved)
+    # tgb.slider(value="{values}")
+    tgb.slider(value="{values}", on_change=slider_moved)
 
-data = compute_data(value)
 
 # Create the GUI and run the app
 gui = Gui(page).run(use_reloader=True)
